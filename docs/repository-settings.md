@@ -1,18 +1,16 @@
 # GitHub settings
 
-Verified October 30, 2026: [sharibenko/my-resume](https://github.com/sharibenko/my-resume) exists as a private repository with `main` as its default branch. Squash-only merging and automatic branch cleanup are enabled. The initial `quality` job passed on GitHub.
-
-Branch protection could not be activated: GitHub returned HTTP 403 and required GitHub Pro or a public repository. Follow the PR and passing-check policy manually until the owner chooses an eligible plan or visibility. The requirements below describe the intended policy; they are not currently enforced.
+Verified October 30, 2026: [sharibenko/my-resume](https://github.com/sharibenko/my-resume) is public with `main` as its default branch. Squash-only merging and automatic branch cleanup are enabled. The initial `quality` job passed on GitHub. Branch protection is active, including for administrators: pull requests, the `quality` check, resolved conversations, and linear history are required; force pushes and deletion are blocked.
 
 | Parameter | Value |
 | --- | --- |
 | Suggested repository name | `my-resume` |
-| Visibility | Private |
+| Visibility | Public |
 | Default branch | `main` |
 | Merge method | Squash only |
 | Delete merged branches | Enabled |
 | CI required check | `quality` |
-| Required pull request | Policy for `main`; enforcement blocked by account plan |
+| Required pull request | Enabled for `main`, including administrators |
 | Required approvals | 0 for solo ownership; 1 when another maintainer is available |
 | Resolve review conversations | Required |
 | Force pushes / branch deletion | Blocked for `main` |
@@ -23,7 +21,7 @@ Branch protection could not be activated: GitHub returned HTTP 403 and required 
 | Dependency updates | Monthly, GitHub Actions only, maximum 2 open PRs |
 | Deployment | None |
 
-## Activate after creation
+## Reproduce these settings
 
 1. Create the repository with the chosen visibility and push the initial files to `main`.
 2. In Settings > General > Pull Requests, enable squash merging only and automatic deletion of head branches.
