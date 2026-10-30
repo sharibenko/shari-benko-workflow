@@ -1,10 +1,10 @@
 # GitHub settings
 
-Verified October 30, 2026: [sharibenko/my-resume](https://github.com/sharibenko/my-resume) is public with `main` as its default branch. Squash-only merging and automatic branch cleanup are enabled. The initial `quality` job passed on GitHub. Branch protection is active, including for administrators: pull requests, the `quality` check, resolved conversations, and linear history are required; force pushes and deletion are blocked.
+Verified October 30, 2026: [sharibenko/shari-benko-workflow](https://github.com/sharibenko/shari-benko-workflow) is public with `main` as its default branch. Squash-only merging and automatic branch cleanup are enabled. The initial `quality` job passed on GitHub. Branch protection is active, including for administrators: pull requests, the `quality` check, resolved conversations, and linear history are required; force pushes and deletion are blocked.
 
 | Parameter | Value |
 | --- | --- |
-| Suggested repository name | `my-resume` |
+| Suggested repository name | `shari-benko-workflow` |
 | Visibility | Public |
 | Default branch | `main` |
 | Merge method | Squash only |
