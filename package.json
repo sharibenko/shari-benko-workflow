@@ -1,0 +1,14 @@
+{
+  "name": "my-resume",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shari Benko's resume, selected work, and lightweight development conventions",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node --test"
+  }
+}
