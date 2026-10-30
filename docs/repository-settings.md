@@ -1,16 +1,18 @@
 # GitHub settings
 
-Status: intended configuration; remote creation, CI execution, and branch rules must be verified on GitHub. Local files alone do not activate these settings.
+Verified October 30, 2026: [sharibenko/my-resume](https://github.com/sharibenko/my-resume) exists as a private repository with `main` as its default branch. Squash-only merging and automatic branch cleanup are enabled. The initial `quality` job passed on GitHub.
+
+Branch protection could not be activated: GitHub returned HTTP 403 and required GitHub Pro or a public repository. Follow the PR and passing-check policy manually until the owner chooses an eligible plan or visibility. The requirements below describe the intended policy; they are not currently enforced.
 
 | Parameter | Value |
 | --- | --- |
 | Suggested repository name | `my-resume` |
-| Visibility | Awaiting owner preference |
+| Visibility | Private |
 | Default branch | `main` |
 | Merge method | Squash only |
 | Delete merged branches | Enabled |
 | CI required check | `quality` |
-| Required pull request | Enabled for `main` |
+| Required pull request | Policy for `main`; enforcement blocked by account plan |
 | Required approvals | 0 for solo ownership; 1 when another maintainer is available |
 | Resolve review conversations | Required |
 | Force pushes / branch deletion | Blocked for `main` |
