@@ -16,7 +16,7 @@ A comparison with a completed design project will examine shared activities, seq
 
 ## Private research and data
 
-The recommended setup separates research, data storage, and public presentation:
+The project architecture separates private research, local data storage, and public presentation:
 
 | Component | Planned location |
 | --- | --- |
