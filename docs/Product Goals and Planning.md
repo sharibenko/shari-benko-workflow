@@ -1,6 +1,6 @@
 # Product Goals and Planning
 
-Status: planning draft for review. Updated October 30, 2026.
+Status: planning draft for review. Updated November 2, 2026.
 
 ## Product goal
 
@@ -16,8 +16,9 @@ that transforms captured events into process-mining data and workflow models.
 
 - Use the public GitHub repository `sharibenko/shari-benko-workflow` for code,
   documentation, and reviewed planning changes.
-- Use Jira Cloud Free for project tracking. Proposed project name: Shari Benko
-  Workflow; proposed project key: SBW. Site and project creation remain pending.
+- Use Jira Cloud Free for project tracking. The Shari Benko Workflow project is
+  created at sharibenko.atlassian.net with key SBW (previously KAN). Billing has
+  not been inspected; Free remains the selected plan.
 - Keep the event journal independent of Jira. Link Jira issue keys to cases;
   one issue may involve several workflow executions.
 - Keep full conversations, screenshots, and working datasets private by default,
@@ -26,9 +27,11 @@ that transforms captured events into process-mining data and workflow models.
 
 ## Prerequisite: project tracking
 
-Create or select a Jira Cloud Free site, then create the project and a simple
-Backlog -> In Progress -> Review -> Done workflow. Track investigations,
-implementation, validation, and unresolved decisions there.
+The site and project are set up with Backlog -> In Progress -> Review -> Done.
+The initial eight tasks and separate architecture task SBW-12 are recorded.
+SBW-7's data contract is approved; implementation and investigation tasks remain
+in Backlog. See the [work log](Work%20Log.md)
+and approved [data contract](Process%20Mining%20Data%20Contract.md).
 
 Initial backlog:
 
@@ -198,7 +201,7 @@ events, and reproduce a reviewed set of workflow sequences.
 
 ## Open decisions for review
 
-- Jira site/account and confirmation of project name and key.
+- Verify the Jira subscription is Free; site, project name, and SBW key are set.
 - Historical chat access and actual hook support in this environment.
 - Case boundaries, activity vocabulary, and handling of overlapping tasks.
 - Private storage location, backup, retention, and selective publication rules.
@@ -213,4 +216,4 @@ events, and reproduce a reviewed set of workflow sequences.
 - [Jira Cloud pricing](https://www.atlassian.com/software/jira/jira/pricing)
 
 These references inform the investigation; they do not establish that capture
-is installed or supported in this chat. No logger or Jira project has been set up.
+is installed or supported in this chat. Jira is set up; no logger is running.

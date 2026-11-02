@@ -37,9 +37,11 @@ Collect privately -> Analyze privately -> Review selected exports -> Publish app
 The project is in planning. This repository has initial documentation, basic
 validation checks, and professional reference content from its original setup.
 
-Jira Cloud Free has been selected for project tracking. The private research
-repository, local SQLite database, backup process, and Jira project have not yet
-been set up. Capture hooks, historical conversation retrieval, screenshot
+Jira is set up with project key SBW and the workflow Backlog -> In Progress ->
+Review -> Done. Free is the selected plan; billing has not been verified.
+The process-mining data contract is approved in SBW-7. The private research
+repository, local SQLite database, and backup process have not yet been set up.
+Capture hooks, historical conversation retrieval, screenshot
 adapters, and the process-mining pipeline still require investigation and
 implementation. No event logger is running, and the HTML page is not built or
 deployed.
@@ -58,6 +60,8 @@ project develops.
 - [Git Pipeline](docs/Git%20Pipeline.md): branching, checks, merging, and deployment plans.
 - [Private Data Storage](docs/Private%20Data%20Storage.md): local database and backup recommendations.
 - [Data Security Policy](docs/Data%20Security%20Policy.md): storage separation and public release controls.
+- [Process Mining Data Contract](docs/Process%20Mining%20Data%20Contract.md): approved event, case, evidence, and export rules.
+- [Work Log](docs/Work%20Log.md): curated progress and decisions by date.
 
 ## Repository structure
 
