@@ -52,3 +52,18 @@ pass. Merge and ticket completion are recorded in GitHub and Jira.
 Created separate architecture task SBW-12 in Backlog for a Markdown deliverable
 with a Mermaid diagram, component boundaries, private/public data flow, and the
 publication approval boundary. Next investigations are SBW-4 and SBW-5.
+
+## November 3, 2026
+
+Moved SBW-12 to In Progress and drafted
+[Project Architecture](Project%20Architecture.md) on a separate architecture branch.
+The Mermaid diagram and component descriptions cover live capture, historical
+imports, private code and local storage, mining transformations, publication
+review, public presentation, Jira tracking, and encrypted backup requirements.
+Implemented components are distinguished from planned ones. No raw research data
+is included. The architecture awaits Shari's review before public release.
+
+Validated Mermaid rendering in a local browser using Mermaid 11.12.0 and inspected
+the complete diagram. Repository formatting/link/syntax checks and all three
+existing tests pass. The draft covers SBW-12's documented scope; Shari's review
+and approval remain pending before publishing or merging it.

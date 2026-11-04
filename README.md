@@ -62,6 +62,8 @@ project develops.
 - [Data Security Policy](docs/Data%20Security%20Policy.md): storage separation and public release controls.
 - [Process Mining Data Contract](docs/Process%20Mining%20Data%20Contract.md): approved event, case, evidence, and export rules.
 - [Work Log](docs/Work%20Log.md): curated progress and decisions by date.
+- [Project Architecture](docs/Project%20Architecture.md): draft component diagram,
+  private storage, analysis flows, and approved public publishing boundary.
 
 ## Repository structure
 
