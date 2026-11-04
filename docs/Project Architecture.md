@@ -1,6 +1,6 @@
 # Project Architecture
 
-Status: draft for Shari's review. November 3, 2026. Jira: SBW-12.
+Status: approved by Shari for publication. November 3, 2026. Jira: SBW-12.
 The data contract was approved under SBW-7. This document describes the intended
 system and its boundaries; the capture and analysis pipeline is not installed.
 
@@ -12,15 +12,16 @@ results enter the public repository only after Shari reviews and approves them.
 Jira tracks the work of building this system.
 
 ```mermaid
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Arial, Helvetica, sans-serif","primaryColor":"#ffffff","primaryTextColor":"#18252e","primaryBorderColor":"#52666e","lineColor":"#52666e","clusterBkg":"#faf9f6","clusterBorder":"#c7d0d3","edgeLabelBackground":"#faf9f6"}}}%%
 flowchart TB
   sources["Sources: live chats, Git activity, generated artifacts"]
   history["Historical chat exports and existing project evidence"]
 
-  subgraph repo["Private research repository"]
+  subgraph repo["Private research repository — planned"]
     code["Versioned capture, import, analysis and export code"]
   end
 
-  subgraph local["Private local workspace"]
+  subgraph local["Private local workspace — planned"]
     capture["Local capture and import adapters"]
     db[("SQLite: raw events, provenance and relationships")]
     files["Private artifact files: screenshots, documents and images"]
@@ -40,38 +41,66 @@ flowchart TB
     files -->|"Linked evidence for local viewing"| analysis
     analysis -->|"Select findings, models and examples"| candidate
     candidate -->|"Inspect text, images and embedded data"| review
-    review -->|"Revise or withhold"| candidate
+    review -->|"If revisions are needed: revise candidate"| candidate
+    withheld["Withheld release: stays private"]
+    review -->|"If release is withheld"| withheld
   end
 
   code -.->|"Run locally; code is not the data store"| capture
   code -.->|"Run analysis and export logic locally"| transform
   sources -->|"Observable activity only"| capture
-  history -->|"Import originals; retain gaps and unknown times"| capture
+  history -->|"If historical evidence is imported: retain gaps and unknown times"| capture
 
-  subgraph backups["Private backups"]
-    backup["Consistent SQLite and artifact backup; encrypted external drive"]
+  subgraph backups["Private backups — planned"]
+    backup["Encrypted backup on separate physical storage — device and schedule TBD"]
     offsite["Optional backup encrypted before cloud upload"]
-    backup -->|"Encrypted copy if selected"| offsite
+    backup -.->|"Optional: encrypted cloud copy if separately selected"| offsite
   end
   db -->|"Consistent database snapshot"| backup
   files -->|"Matching artifact versions"| backup
 
-  subgraph public["Public repository"]
-    approved["Approved release files and public presentation code"]
+  subgraph public["Public repository — exists; publication pipeline planned"]
+    approved["Approved release files and public presentation code — planned"]
     ci["PR review and CI checks"]
-    html["Public HTML page, models, examples and insights"]
+    html["Public HTML page, models, examples and insights — planned"]
     approved -->|"Branch and pull request"| ci
     ci -->|"Merge; future build and deployment"| html
   end
-  review -->|"Only explicitly approved files cross this boundary"| approved
+  review -->|"If explicitly approved: only approved files cross this boundary"| approved
 
   jira["Jira: implementation tasks and decisions; already set up"]
   jira -.->|"Optional task references; independent research IDs"| db
+
+  %% Edge indices follow arrow declaration order; update when adding flows.
+  %% Code execution and optional Jira references: thin gray dotted arrows.
+  linkStyle 13,14,23 stroke:#52666e,stroke-width:1px,stroke-dasharray:2 4;
+  %% Optional cloud capability: dashed arrow, also explicitly labeled Optional.
+  linkStyle 17 stroke:#8a6200,stroke-width:2px,stroke-dasharray:8 5;
+  %% Approved publication path: green accent; approval remains mandatory.
+  linkStyle 20,21,22 stroke:#23865a,stroke-width:2px;
+  classDef neutral fill:#ffffff,stroke:#52666e,color:#18252e;
+  classDef publication fill:#e4f4ec,stroke:#23865a,color:#18252e;
+  class sources,history,code,capture,db,files,transform,exports,analysis,candidate,review,withheld,backup,offsite,jira neutral;
+  class approved,ci,html publication;
 ```
 
-Solid arrows describe planned data or release flows. Dotted arrows describe code
-execution or optional tracking relationships. The public repository and Jira
-exist; their presence does not mean the other boxes are operational.
+### Diagram legend
+
+| Treatment | Meaning |
+| --- | --- |
+| Solid arrow | Core data or release flow in the chosen architecture |
+| Dashed arrow labeled Optional | Optional capability; the cloud copy requires a separate decision |
+| Arrow labeled If | Conditional action, including historical import and publication-review outcomes |
+| Thin gray dotted arrow | Code execution or reference relationship; Jira references are explicitly optional |
+| Green publication path | Approved-output flow; explicit approval is required for every public release |
+| Planned / exists text | Implementation state, independent of whether a flow is core or optional |
+
+Labels carry the meaning alongside line style and color. Conditional actions use
+solid arrows: they are followed only when their stated condition applies. The
+physical backup is a core requirement; only the additional cloud copy is optional.
+Withholding ends that release path privately; revising returns to the candidate.
+The public repository and Jira exist; the capture, backup and publication pipelines
+remain planned. Green does not mean a component is already implemented.
 
 ## Components and ownership of responsibilities
 
@@ -96,9 +125,11 @@ documents. Future internal research planning belongs in the private repository.
 
 ## Capture and historical imports
 
-Live adapters will observe supported submitted prompts, responses, tool actions,
-Git activity and artifact outputs. Actual hook fields and delivery behavior must
-be proven in SBW-5/SBW-6. Capture failures and unavailable evidence remain visible.
+For new work, integrations will capture submitted prompts, responses and other
+workflow events where the tool provides supported access. We will verify the
+available capture methods and document any gaps before implementation. SBW-5
+investigates supported access and available fields; SBW-6 proves capture and
+delivery behavior. Capture failures and unavailable evidence remain visible.
 Public GitHub actions are captured after push or merge; local Git changes retain
 local version references until a corresponding browser view exists.
 
@@ -160,6 +191,13 @@ Choose retention, deletion, backup schedule, recovery objectives and key recover
 before live collection. Repository history cannot restore research files that
 were deliberately kept outside Git.
 
+SBW-8 owns backup planning and setup before live collection: select the physical
+device type and capacity using measured storage needs, define encryption and
+recovery-key storage, frequency and retention, disconnection and separate storage,
+and test restoring a consistent SQLite snapshot with its linked artifact files.
+The architecture establishes the backup boundary; hardware and operating details
+remain undecided until that task is completed.
+
 ## Jira's role
 
 Jira tracks implementation work for this project. Research records have their own
@@ -175,7 +213,7 @@ raw evidence in private local storage.
 | SBW-7 | Approved event/case contract defines records across live and historical paths |
 | SBW-4 and SBW-5 | Establish historical access and supported live capture |
 | SBW-6 | Prove exact capture and report limitations |
-| SBW-8 | Set up private storage, durable logging and categorization |
+| SBW-8 | Set up private storage, durable logging, categorization, encrypted backups and tested recovery |
 | SBW-9 | Implement version-linked artifact capture and screenshots |
 | SBW-10 | Validate reproducible mining transformations and exports |
 | SBW-11 | Build the journal and discovery pilot; review resulting insights |
@@ -183,8 +221,9 @@ raw evidence in private local storage.
 SBW-12 acceptance: the diagram and explanations cover live/historical sources,
 both repositories, local database and artifacts, labeled processing flows,
 explicit publication approval, independent Jira tracking, backups, and component
-status. Review diagram rendering and repository checks before approval. This
-draft remains for review; implementing these components is separate work.
+status. Shari approved publication of this architecture. Diagram rendering and
+repository checks must pass before merge; implementing these components is
+separate work.
 
 ## Related decisions
 
