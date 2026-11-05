@@ -104,3 +104,11 @@ human-input/context separation, overlapping event representations, artifact gaps
 timestamp mapping and a proposed private import procedure. No raw conversation
 was copied into Git, synchronized workspace files or Jira. No importer, archive
 or database was installed; review and full import reconciliation remain pending.
+
+Expanded SBW-4 following Shari's direction to support repeated intake of new and
+existing projects. Added stable project/source/import-run relationships,
+source-specific methods mapped to the shared contract, repeat-import identity and
+correction rules, dimension-level coverage reports, live-capture reconciliation
+and a second-source evaluation requirement. Cross-source access remains unverified;
+no additional project's raw data was acquired and importer implementation remains
+separate. Updated Jira scope to match; the draft remains in Review.

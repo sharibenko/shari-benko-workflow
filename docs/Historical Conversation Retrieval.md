@@ -8,8 +8,11 @@ This document contains capability findings and an import design, not raw chats.
 
 The first submitted input in this project's current chat is retrievable from
 the local Codex transcript. The app history reader also reaches that input by
-paging to the oldest turn. This establishes access for this chat, not universal
-coverage for every ChatGPT conversation, device or deleted chat.
+paging to the oldest turn. This investigation verifies access for the current
+chat. The retrieval strategy will support repeated intake of new and existing
+projects through source-specific importers, with explicit coverage reports.
+Availability must be verified for each source; missing or deleted evidence will
+remain documented gaps.
 
 A read-only inspection found message text, source message identities, turn
 references and source creation times in the local transcript. No database import,
@@ -114,7 +117,103 @@ Remaining limits:
 - App format changes, duplicate representations, context injection and compaction
   require explicit compatibility and coverage reports before mining use.
 
-## Proposed import procedure
+## Reusable project intake and import strategy
+
+Use one shared research contract with separate source-specific acquisition and
+parsing methods. A project receives a stable internal project ID; chats, source
+snapshots, import runs, cases and artifacts retain their own identities. A project
+can span several chats, sources and devices. Project membership does not replace
+the contract's reviewed case boundaries.
+
+### Project intake record
+
+For each new or existing project, record privately:
+
+- Project ID, research purpose, intended outcome and requested historical scope.
+- Selected chats, repositories, artifact collections and devices; source identities
+  and access methods, with availability verified rather than assumed.
+- Source/application format and version, adapter/parser version and contract version.
+- Known date range, acquisition cutoff and source-provided timezone/precision.
+- Available messages, ordering, identifiers, lifecycle evidence and artifacts;
+  missing evidence, access restrictions and unverified areas.
+- Snapshot hashes, import-run references and reviewed project/case relationships.
+
+Keep credentials and raw source text out of intake summaries. Sensitive locations
+and source identifiers remain private. Access to one source does not authorize
+collecting every conversation or device; acquire the selected project scope only.
+
+### Source-specific methods
+
+| Source family | Intake method | Validation before use |
+| --- | --- | --- |
+| Local Codex transcript | Locate the selected chat, obtain a consistent snapshot, parse typed records | Schema/version compatibility, message identity, context separation and overlapping representations |
+| Available chat export from another surface | Obtain the selected original export and preserve it unchanged | Actual format, text fidelity, source times, IDs, branches and attachment coverage; currently unverified |
+| Existing Git and project artifacts | Inventory selected history and surviving files, preserving versions and provenance | Link commits/files to observed events; distinguish original artifacts from later reconstructions |
+| Manual evidence when structured access is unavailable | Retain the supplied original and record how it was obtained | Explicit partial coverage; no invented source times, IDs or missing messages |
+
+The local Codex path is observed; other methods are candidates until tested on
+their actual source. Prefer supported export/access facilities where available.
+Each method maps to the same contract while retaining source-specific provenance
+and missing-field reasons. An unsupported source stays unverified or unavailable;
+it must not silently fall back to summary reconstruction.
+
+### Repeat imports and reconciliation
+
+Each acquisition produces an immutable snapshot and a separate import-run record.
+Record input hashes, source scope, cutoff, parser/contract versions, start/end
+times, outcome and counts. Re-importing the same evidence must not create duplicate
+research events. Identify records using adapter/source scope plus stable source
+identity where available; content hashes alone cannot distinguish intentional
+repeated submissions.
+
+When IDs are missing or differ across overlapping exports, flag possible matches
+for review. New records append; changed source records retain both versions with
+a linked correction decision. Absence from a later export is a coverage observation,
+not an instruction to delete earlier evidence. A parser upgrade records a new
+derivation version without silently replacing raw records or research identities.
+Interrupted imports must resume or retry without duplicating accepted records.
+
+For new projects, capture a baseline at intake, then use SBW-5/SBW-6's verified
+live-capture approach as it becomes available. Subsequent snapshots reconcile
+missed events and artifacts through the same identity rules. Repeated historical
+imports complement ongoing capture; they do not establish live delivery coverage.
+For older projects, import the available history and retain its observed boundaries.
+
+### Coverage report per project and source
+
+Every intake and repeat import produces a versioned report linked to its snapshots
+and import run. Assess text, source times, ordering, identities, lifecycle and
+artifacts separately; a single project-wide label must not hide missing dimensions.
+
+| Coverage state | Meaning within the declared scope and cutoff |
+| --- | --- |
+| Complete | Reconciled against a defined source inventory/reference with no known omissions for that dimension; never a claim that the source retained all original work |
+| Partial | Evidence is available with identified gaps, truncation, missing metadata or unresolved reconciliation |
+| Unavailable | A specified source or evidence item could not be retrieved; record why |
+| Unverified | Access or completeness has not yet been tested |
+
+Reports include requested versus observed time ranges, counts by source/actor,
+unknown timestamps, suspected duplicates, conflicts, excluded records, missing
+artifacts and compatibility errors. Explain evidence supporting each coverage
+state, mining eligibility and next actions. An empty result does not prove no work
+occurred. Keep raw text and private paths out of public/Jira summaries.
+
+### Validation scope and implementation handoff
+
+SBW-4 defines this strategy and its evaluation requirements. The current chat
+provides the first feasibility observation. A second existing project from a
+different source should be selected with Shari and checked for format, text,
+timestamps, identities and artifacts before claiming cross-source validation.
+No second project/source has been selected or tested. Until then, cross-source
+coverage remains unverified; synthetic examples can test the design but cannot
+establish access to a real source.
+
+Importer implementation, retry/deduplication tests and operational reconciliation
+need separate implementation tasking after the strategy review. Coordinate storage
+with SBW-8, artifacts with SBW-9 and mining eligibility with SBW-10. SBW-4 does not
+authorize installing collection software or importing raw research into Git.
+
+## Proposed per-source import procedure
 
 1. Complete SBW-8's private storage, encryption, retention and backup prerequisites.
    Keep raw archives outside Git and synchronized folders.
@@ -146,10 +245,15 @@ Importer implementation and operational validation remain future work.
 | Keep unknown times unknown | Contract mapping forbids replacing unknown times with import or turn time |
 | Do not reconstruct text from summaries | Originals-only rule and compaction caveat documented |
 | Document provenance, gaps and historical artifacts | Access matrix, raw snapshot requirements, artifact inventory procedure and explicit limits above |
+| Define reusable intake across new and existing projects | Project intake record, source-specific methods and shared contract mappings specified |
+| Define repeat imports without duplicate events | Snapshot/import-run provenance, identity scope, ambiguous-match review, correction and retry rules specified; implementation untested |
+| Define coverage reporting and cross-source evaluation | Dimension-level coverage states and second-project evaluation criteria specified; second source not selected or verified |
 
 The investigation is ready for review. It establishes a feasible candidate and
 its limitations; it does not claim a completed importer or a complete private
 archive. SBW-5/SBW-6 investigate and prove new-work capture independently.
+The expanded deliverable defines the reusable strategy; cross-source validation
+and importer implementation remain explicitly outstanding, not completed claims.
 
 ## Official documentation consulted
 
