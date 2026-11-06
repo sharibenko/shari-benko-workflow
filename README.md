@@ -46,10 +46,6 @@ adapters, and the process-mining pipeline still require investigation and
 implementation. No event logger is running, and the HTML page is not built or
 deployed.
 
-The existing resume and portfolio summaries are reference material from the
-initial setup. Their role in the public presentation will be reviewed as the
-project develops.
-
 ## Project documentation
 
 - [Contributing](CONTRIBUTING.md): branching, validation, review, and merge conventions.

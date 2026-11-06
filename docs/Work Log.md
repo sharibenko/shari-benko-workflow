@@ -92,3 +92,23 @@ merge, followed by closing SBW-12 if its acceptance criteria are satisfied.
 Removed an unfinished editing fragment from the introduction and updated the
 architecture's approval status. Merge, CI and acceptance evidence will be recorded
 in the pull request and Jira; implementation tasks remain separate.
+
+## November 5, 2026
+
+Started SBW-4 and moved it to In Progress. Drafted
+[Historical Conversation Retrieval](Historical%20Conversation%20Retrieval.md)
+on `codex/historical-retrieval`. Read-only app pagination reached this chat's first
+input; a matching local transcript exposed message text, identities, turn references
+and source creation times. Documented observed schema versus supported commands,
+human-input/context separation, overlapping event representations, artifact gaps,
+timestamp mapping and a proposed private import procedure. No raw conversation
+was copied into Git, synchronized workspace files or Jira. No importer, archive
+or database was installed; review and full import reconciliation remain pending.
+
+Expanded SBW-4 following Shari's direction to support repeated intake of new and
+existing projects. Added stable project/source/import-run relationships,
+source-specific methods mapped to the shared contract, repeat-import identity and
+correction rules, dimension-level coverage reports, live-capture reconciliation
+and a second-source evaluation requirement. Cross-source access remains unverified;
+no additional project's raw data was acquired and importer implementation remains
+separate. Updated Jira scope to match; the draft remains in Review.
