@@ -112,3 +112,14 @@ correction rules, dimension-level coverage reports, live-capture reconciliation
 and a second-source evaluation requirement. Cross-source access remains unverified;
 no additional project's raw data was acquired and importer implementation remains
 separate. Updated Jira scope to match; the draft remains in Review.
+
+## November 8, 2026
+
+Started SBW-5 on `codex/live-capture-investigation`. Drafted
+[Live Capture Capabilities](Live%20Capture%20Capabilities.md) from current official
+hook documentation and read-only CLI/config discovery. The local CLI reports
+hooks enabled; actual handler delivery in this desktop chat remains unverified.
+Documented candidate prompt/response/lifecycle/tool fields, orchestration and
+coverage limits, privacy prerequisites and pending synthetic tests for SBW-6.
+No hook was installed, trusted or enabled and no raw capture was added to Git.
+SBW-5 remains In Progress; ordinary repository tests do not prove hook delivery.
