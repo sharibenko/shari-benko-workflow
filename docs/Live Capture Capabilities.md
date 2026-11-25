@@ -29,6 +29,7 @@ The [official Hooks guide](https://learn.chatgpt.com/docs/hooks), accessed Novem
 | `UserPromptSubmit` | `prompt`, `turn_id`: candidate submitted-text capture |
 | `Stop` | `turn_id`, `stop_hook_active`, nullable `last_assistant_message`: latest response, not a complete transcript |
 | `Interrupt` | Main-thread interruption and `turn_id`; default one-second timeout, maximum three seconds |
+| `PreCompact` / `PostCompact` | November 9 documentation follow-up: candidate before/after compaction signals with turn identity and manual/auto trigger; desktop delivery unverified |
 | `PreToolUse` / `PostToolUse` | `tool_name`, `tool_use_id`, `tool_input`; hosted search excluded and specialized paths can bypass hooks |
 | `PreModelRequest` / `PostModelRequest` | Per-attempt diagnostics; outcome is not full assistant response text |
 | Common metadata | Session identity, nullable transcript path, working directory and event name; validate event-specific fields |
@@ -173,4 +174,6 @@ tested by the repository's ordinary documentation checks.
 
 Related: [Data Contract](Process%20Mining%20Data%20Contract.md),
 [Project Architecture](Project%20Architecture.md),
-[Data Security Policy](Data%20Security%20Policy.md).
+[Data Security Policy](Data%20Security%20Policy.md),
+[Synthetic Capture Probe](Synthetic%20Capture%20Probe.md) (implementation draft;
+not part of the previously approved plan version).

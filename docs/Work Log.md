@@ -123,3 +123,48 @@ Documented candidate prompt/response/lifecycle/tool fields, orchestration and
 coverage limits, privacy prerequisites and pending synthetic tests for SBW-6.
 No hook was installed, trusted or enabled and no raw capture was added to Git.
 SBW-5 remains In Progress; ordinary repository tests do not prove hook delivery.
+
+## November 9, 2026
+
+Merged the reviewed live capture plan through PR #9 with passing CI. Started
+`codex/synthetic-capture-probe` for SBW-5 feasibility work. Prepared a passive,
+session-allowlisted synthetic receipt handler, offline tests, and a
+[setup and rollback guide](Synthetic%20Capture%20Probe.md). Refreshed official
+documentation evidence for PreCompact/PostCompact candidates. No hook definitions
+were installed or trusted; desktop delivery, steering, compaction continuity and
+production capture remain unverified. Draft implementation awaits review.
+
+## November 17, 2026
+
+Reorganized [Synthetic Capture Probe](Synthetic%20Capture%20Probe.md) for human
+review: plain-language purpose and methodology first, implementation reference
+second, execution and evidence instructions third. Identified the input size and
+timing limits as provisional author-selected assumptions requiring evaluation.
+The handler code and configuration remain unchanged; no hooks were enabled and
+the methodology draft awaits Shari's review.
+
+## November 21, 2026
+
+Added Shari's agreed long-pause scenario to
+[Synthetic Capture Probe](Synthetic%20Capture%20Probe.md): resume after at least
+10 hours, separately testing an open conversation and an app restart. The test
+checks record availability, capture continuity and case identity, and distinguishes
+elapsed gaps from active work. Clarified which conversation scenarios the review
+question refers to. SBW-5 assesses feasibility; SBW-8 retains durable storage and
+recovery scope. This is a methodology edit, not an executed runtime test; no hooks
+were enabled.
+
+Documented the mixed-topic scope-review rule in Synthetic Capture Probe: preserve
+private originals, annotate message/activity scope separately, retain review and
+correction history, and include only case-approved records in mining exports.
+Excluded activities remain distinct from missing data and active working time.
+Added a synthetic review walkthrough; classification and export filtering remain
+future implementation work. No collection or publication was enabled.
+
+## November 25, 2026
+
+Shari authorized committing the reviewed synthetic capture methodology, prototype
+handler and offline tests, pushing the branch and opening a PR. Updated the
+methodology's review status while keeping activation setup and runtime evidence
+pending. No hook configuration was installed or enabled; SBW-5 remains a
+feasibility investigation.
